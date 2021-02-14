@@ -10,6 +10,9 @@
         <a href='{% url 'accountapp:login'%}?next={{ request.path }}'>
             <span>로그인</span>
         </a>
+        <a href='{% url 'accountapp:create'%}?next={{ request.path }}'>
+            <span>회원가입</span>
+        </a>
         {% else %}
         <a href='{% url 'accountapp:detail' pk=user.pk %}'>
             <span>마이 페이지</span>

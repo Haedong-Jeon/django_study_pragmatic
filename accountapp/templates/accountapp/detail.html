@@ -3,9 +3,9 @@
 {% block content %}
     <div>
         <div style='text-align:center; max-width: 500px; margin: 4rem auto;'>
-            <img src='{{ target_user.profile.image.url }}' alt = '' 
-            style='height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem;'>
             {% if target_user.profile %}
+                <img src='{{ target_user.profile.image.url }}' alt = '' 
+                style='height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem;'>
                 <h2>
                 {{ target_user.profile.nickname }}
                 </h2>
@@ -13,15 +13,23 @@
                 {{ target_user.profile.message }}
                 </h6>
                 <br>
+                {% if target_user == user %}
                 <a href='{% url 'profileapp:update' pk=target_user.profile.pk %}' style='color:black'>
                     프로필 수정
                 </a>
+                {% endif %}
             {% else %}
+                {% if target_user == user %}
                 <a href='{% url 'profileapp:create' %}'>
                     <h2>
                     프로필 생성
                     </h2>
                 </a>
+                {% else %}
+                <h2>
+                프로필 미설정자
+                </h2>
+                {% endif %}
             {% endif %}
             {% if target_user == user %}
             <a href='{% url 'accountapp:update' pk=user.pk %}' style = 'color:black'>

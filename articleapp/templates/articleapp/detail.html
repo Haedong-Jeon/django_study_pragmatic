@@ -21,6 +21,9 @@
             </a>
         <div>
         <hr>
+        {% for comment in target_article.comment.all %}
+            {% include 'commentapp/detail.html' with comment=comment %}
+        {% endfor %}
         {% include 'commentapp/create.html' with article=target_article %}
         {% endif %}
     </div>

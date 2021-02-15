@@ -21,6 +21,7 @@
             </a>
         <div>
         <hr>
+        {% include 'commentapp/create.html' with article=target_article %}
         {% endif %}
     </div>
 {% endblock %}
